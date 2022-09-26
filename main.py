@@ -8,21 +8,10 @@ import uvicorn
 from typing import List
 import crud, models, schemas
 from database import SessionLocal, engine
-from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
-
-origins = ['*']
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 # Dependency
 def get_db():
@@ -39,7 +28,7 @@ class User(BaseModel):
 
 
 class Settings(BaseModel):
-    authjwt_secret_key: str = "xndjnffkfnffj"
+    authjwt_secret_key: str = "xndjnffkfnffjfhjhgjgfsyiz"
 
 # callback to get your configuration
 @AuthJWT.load_config
