@@ -150,7 +150,7 @@ def create_annexure4(Annexure4: schemas.createannexure4,db: Session = Depends(ge
     Authorize.jwt_required()
     return crud.create_annexure4(db=db,annexure4=Annexure4)
 
-app.mount('/',StaticFiles(directory='sqlapp/dist',html=True))
+app.mount('/',StaticFiles(directory='dist',html=True))
 
 
 
