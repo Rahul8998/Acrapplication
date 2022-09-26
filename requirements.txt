@@ -1,5 +1,5 @@
 fastapi
 SQLAlchemy
 uvicorn
-gunicorn
+fastapi-jwt-auth
 pysqlite3
