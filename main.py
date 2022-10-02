@@ -1,6 +1,7 @@
 from fastapi.staticfiles import StaticFiles
 from fastapi import Depends, FastAPI, HTTPException, Body, Request, status
 from fastapi.responses import JSONResponse
+from fastapi.middleware.gzip import GZipMiddleware
 from sqlalchemy.orm import Session
 from fastapi_jwt_auth import AuthJWT
 from fastapi_jwt_auth.exceptions import AuthJWTException
@@ -12,6 +13,9 @@ from pydantic import BaseModel
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+
+app.add_middleware(GZipMiddleware, minimum_size=1000)
+
 
 # Dependency
 def get_db():
