@@ -1,0 +1,1 @@
+table{table-layout:fixed;width:550px;border:2px solid black;border-collapse:collapse}tbody td{text-align:center}thead th:nth-child(1){width:10%}tbody td:nth-child(1){width:10%}th,td{padding:5px;border:1px solid black}@media print{.pagebreak{page-break-before:always}}
