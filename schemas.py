@@ -24,6 +24,7 @@ class heirarchyCreate(heirarchybase):
     
 
 class annexure1base(BaseModel):
+    Membership: str
     award: str
     duties: str
     targets: str
@@ -85,13 +86,13 @@ class createannexure2(BaseModel):
 
 class createannexure3(BaseModel):
     annexure3_id:int 
-    agreed : bool
+    agreed : str
     reasons: str 
     comments : str 
 
 class createannexure4(BaseModel):
     annexure4_id:int 
-    agreed : bool
+    agreed : str
     reasons: str 
     comments : str 
 

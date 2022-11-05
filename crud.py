@@ -14,7 +14,7 @@ def get_heirarchy(db: Session, hrms: str):
     return db.query(heirarchy).filter(heirarchy.hrms == hrms,heirarchy.submitted == 0).all()
 
 def get_inprogress(db: Session, hrms: str):
-    return db.query(heirarchy).filter((heirarchy.hrms == hrms),(heirarchy.submitted == 1),(heirarchy.marked_to == 1)).all()
+    return db.query(heirarchy).filter((heirarchy.hrms == hrms),(heirarchy.submitted == 1),(heirarchy.marked_to != 5)).all()
 
 def get_completed(db: Session, hrms: str):
     return db.query(heirarchy).filter((heirarchy.hrms == hrms),(heirarchy.marked_to == 5),(heirarchy.submitted == 1)).all()
@@ -41,6 +41,7 @@ def create_heirarchy(db: Session, heirarchi: schemas.heirarchyCreate):
 
 def add_annexure1(db: Session,annexure1: schemas.annexure1Create):
     db_annexure1 = Annexure1(award=annexure1.award,
+    Membership=annexure1.Membership,
     duties=annexure1.duties,
     targets=annexure1.targets,
     achievement=annexure1.achievement,
@@ -114,6 +115,10 @@ def get_Annexure3(db: Session, id:str):
     db_query = db.query(Annexure3).filter(Annexure3.annexure3_id==id).first()
     return db_query
 
+def get_Annexure4(db: Session, id:str):
+    db_query = db.query(Annexure4).filter(Annexure4.annexure4_id==id).first()
+    return db_query
+
 def create_annexure3(db:Session,annexure3: schemas.createannexure3):
     db_query = Annexure3(
         annexure3_id=annexure3.annexure3_id,
@@ -121,13 +126,13 @@ def create_annexure3(db:Session,annexure3: schemas.createannexure3):
         reasons = annexure3.reasons,
         comments = annexure3.comments)
     db.add(db_query)
-    db.commit()
     db_heirarchy = db.query(heirarchy).filter(heirarchy.id == annexure3.annexure3_id).first()
     db_heirarchy.marked_to = 4
     db_heirarchy.reviewed_on = datetime.datetime.now()
     db.add(db_heirarchy)
     db.commit()
     db.refresh(db_heirarchy)
+    db.refresh(db_query)
     return {'ok':True}
 
 def create_annexure4(db:Session,annexure4: schemas.createannexure4):
@@ -137,11 +142,11 @@ def create_annexure4(db:Session,annexure4: schemas.createannexure4):
         reasons = annexure4.reasons,
         comments = annexure4.comments)
     db.add(db_query)
-    db.commit()
     db_heirarchy = db.query(heirarchy).filter(heirarchy.id == annexure4.annexure4_id).first()
     db_heirarchy.marked_to = 5
     db_heirarchy.accepted_on = datetime.datetime.now()
     db.add(db_heirarchy)
     db.commit()
     db.refresh(db_heirarchy)
+    db.refresh(db_query)
     return {'ok':True}

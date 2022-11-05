@@ -44,6 +44,7 @@ class Annexure1(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     annexure_id = Column(Integer, ForeignKey("heirarchy.id",ondelete="CASCADE"),unique=True)
+    Membership= Column(String)
     award = Column(String)
     duties = Column(String)
     targets = Column(String)
@@ -71,8 +72,8 @@ class profileData(Base):
 class Annexure2(Base):
     __tablename__ = "Annexure2"
     annexure2_id=Column(Integer,ForeignKey("heirarchy.id",ondelete="CASCADE"),primary_key=True,index=True)
-    agree_1=Column(Boolean)
-    agree_2=Column(Boolean)
+    agree_1=Column(String)
+    agree_2=Column(String)
     accomplishmentOfTargets_1=Column(Float)
     accomplishmentOfTargets_2=Column(Float)
     qualityOfOutput_1=Column(Float)
@@ -111,13 +112,13 @@ class Annexure2(Base):
 class Annexure3(Base):
     __tablename__ = "Annexure3"
     annexure3_id = Column(Integer,ForeignKey("heirarchy.id",ondelete="CASCADE"),primary_key=True, index=True,)
-    agreed = Column(Boolean,default=0)
+    agreed = Column(String)
     reasons = Column(String)
     comments = Column(String)
 
 class Annexure4(Base):
     __tablename__ = "Annexure4"
     annexure4_id = Column(Integer,ForeignKey("heirarchy.id",ondelete="CASCADE"),primary_key=True, index=True,)
-    agreed = Column(Boolean, default=0)
+    agreed = Column(String)
     reasons = Column(String)
     comments = Column(String)
