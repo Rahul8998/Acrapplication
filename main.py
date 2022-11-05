@@ -144,7 +144,7 @@ def create_annexure4(Annexure4: schemas.createannexure4,db: Session = Depends(ge
 @app.get("/annexure4/{id}")
 def get_annexure4(id:str,db: Session = Depends(get_db),Authorize: AuthJWT = Depends()):
     Authorize.jwt_required()
-    return crud.get_annexure4(db=db,id=id)
+    return crud.get_Annexure4(db=db,id=id)
 app.mount('/',StaticFiles(directory='dist',html=True))
 
 
