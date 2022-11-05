@@ -119,7 +119,6 @@ def create_annexure2(data:List=Body(),db: Session = Depends(get_db),Authorize: A
     datar=tuple(sub[k] for k in ['reportingOfficer1','reportingOfficer2'] for sub in data if k in sub)
     datar=(data[-1]['annexure2_id'],data[-1]['agree1'],data[-1]['agree2'])+datar
     datar=datar+(data[-1]['comment1'],data[-1]['comment2'],data[-1]['integrity1'] ,data[-1]['integrity2'])
-    print(datar)
     return crud.create_annexure2(db=db,data=datar)
 
 @app.get("/annexure2/{id}")
@@ -142,7 +141,10 @@ def get_annexure2(id:str,db: Session = Depends(get_db),Authorize: AuthJWT = Depe
 def create_annexure4(Annexure4: schemas.createannexure4,db: Session = Depends(get_db),Authorize: AuthJWT = Depends()):
     Authorize.jwt_required()
     return crud.create_annexure4(db=db,annexure4=Annexure4)
-
+@app.get("/annexure4/{id}")
+def get_annexure4(id:str,db: Session = Depends(get_db),Authorize: AuthJWT = Depends()):
+    Authorize.jwt_required()
+    return crud.get_annexure4(db=db,id=id)
 app.mount('/',StaticFiles(directory='dist',html=True))
 
 
