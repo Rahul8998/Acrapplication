@@ -1,1 +1,0 @@
-.my-table{table-layout:fixed;width:550px;border:2px solid black;border-collapse:collapse}table.my-table>thead th:nth-child(1){width:10%}table.my-table>tbody td:nth-child(1){width:10%}table.my-table th,td{padding:5px;border:1px solid black}@media print{.pagebreak{page-break-before:always}@page{size:A4 portrait}}
