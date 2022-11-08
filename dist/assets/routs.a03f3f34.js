@@ -1,0 +1,1 @@
+import{b as l}from"./index.ce5c1339.js";import{u}from"./auth.f845ccf8.js";import"./axios.47ae6c8c.js";var p=l(({router:r,store:t})=>{r.beforeEach((e,n,o)=>{const a=u(t),i=!["/login"].includes(e.path),s=a.logedIn;i&&!s?o("/login"):e.name=="login"&&s?o("/"):o()})});export{p as default};
