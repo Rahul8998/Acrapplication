@@ -4,7 +4,7 @@
     "target": {
       "namespace": "android_app",
       "package_name": "xyz.appmaker.qdihly",
-      "sha256_cert_fingerprints": ["BB:E0:23:F8:AC:A6:50:4D:23:9A:73:1B:0F:FE:2A:13:99:6D:DA:C0:E2:6B:27:D6:4C:9D:CE:B9:A2:24:AB:74"]
+      "sha256_cert_fingerprints": ["C3:AF:D3:DD:F5:1E:72:15:0B:33:1C:AE:0A:57:EC:8F:2A:17:1C:90:96:92:06:36:FD:3C:ED:CF:97:D8:58:B6"]
     }
   }
 ]
