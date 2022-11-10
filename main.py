@@ -5,6 +5,7 @@ from fastapi.middleware.gzip import GZipMiddleware
 from sqlalchemy.orm import Session
 from fastapi_jwt_auth import AuthJWT
 from fastapi_jwt_auth.exceptions import AuthJWTException
+from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from typing import List
 import crud, models, schemas
@@ -14,6 +15,17 @@ models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
+origins = [
+    "https://rahul8998.github.io"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 app.add_middleware(GZipMiddleware, minimum_size=1000)
 
 
